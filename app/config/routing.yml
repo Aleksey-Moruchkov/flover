@@ -1,0 +1,16 @@
+flover:
+    resource: "@FloverBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+floverart:
+    resource: "@FloverartBundle/Resources/config/routing.yml"
+    prefix:   /v1
+
+floverart_login:
+    resource: "@FloverartBundle/Resources/config/login.yml"
+    prefix:   /
+
+app:
+    resource: '@AppBundle/Controller/'
+    type: annotation
