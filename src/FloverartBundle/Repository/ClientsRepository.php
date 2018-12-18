@@ -2,6 +2,8 @@
 
 namespace FloverartBundle\Repository;
 
+use FloverartBundle\Entity\Clients;
+
 /**
  * ClientsRepository
  *
@@ -10,4 +12,48 @@ namespace FloverartBundle\Repository;
  */
 class ClientsRepository extends \Doctrine\ORM\EntityRepository
 {
+    private const SALT = '?~*W3P~4z8Ef57#c}eV50~qb8av#qqK|9giJtgdB';
+
+    public function validateToken($token) {
+        list($rnd, $hash, $clientId) = explode('.', $token);
+
+        if (empty($rnd) || empty($hash) || empty($clientId)) {
+            return false;
+        }
+
+        return sha1($rnd . self::SALT . $clientId) == $hash;
+    }
+
+    public function generateToken()
+    {
+        $em = $this->getEntityManager();
+
+        $client = new Clients();
+        $client->setCreatedAt(date('Y-m-d H:i:s'))
+            ->setIsDeleted(0);
+
+        $em->persist($client);
+        $em->flush();
+
+        $rnd = substr(sha1('z' . random_int(0, PHP_INT_MAX)),5, 20);
+        $hash = sha1(  $rnd . self::SALT . $client->getId());
+
+        $token = [
+            $rnd,
+            $hash,
+            $client->getId()
+        ];
+
+        $client->setToken(implode('.', $token));
+        $em->flush($client);
+        $em->persist();
+
+        return $client->getToken();
+    }
+
+    public function getClientByToken($token) {
+        list($rnd, $hash, $clientId) = explode('.', $token);
+
+        return $this->find($clientId);
+    }
 }

@@ -42,6 +42,20 @@ class Clients
      */
     private $createdAt;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="is_deleted", type="integer")
+     */
+    private $isDeleted;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="deleted_at", type="string")
+     */
+    private $deletedAt;
+
 
     /**
      * Get id
@@ -123,6 +137,54 @@ class Clients
     public function getCreatedAt()
     {
         return $this->createdAt;
+    }
+
+    /**
+     * Set isDeleted
+     *
+     * @param integer $isDeleted
+     *
+     * @return Clients
+     */
+    public function setIsDeleted($flag)
+    {
+        $this->isDeleted = $flag;
+
+        return $this;
+    }
+
+    /**
+     * Get isDeleted
+     *
+     * @return integer
+     */
+    public function getIsDeleted()
+    {
+        return $this->isDeleted;
+    }
+
+    /**
+     * Set deletedAt
+     *
+     * @param string $deletedAt
+     *
+     * @return Clients
+     */
+    public function setDeletedAt($deletedAt)
+    {
+        $this->deletedAt = $deletedAt;
+
+        return $this;
+    }
+
+    /**
+     * Get deletedAt
+     *
+     * @return string
+     */
+    public function getDeletedAt()
+    {
+        return $this->deletedAt;
     }
 }
 

@@ -39,23 +39,9 @@ class Users implements UserInterface
     /**
      * @var string
      *
-     * @ORM\Column(name="email", type="string", length=50)
-     */
-    private $email;
-
-    /**
-     * @var string
-     *
      * @ORM\Column(name="created_at", type="string", length=255)
      */
     private $createdAt;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="updated_at", type="string", length=255)
-     */
-    private $updatedAt;
 
     /**
      * @var string
@@ -70,20 +56,6 @@ class Users implements UserInterface
      * @ORM\Column(name="is_deleted", type="boolean")
      */
     private $isDeleted = 0;
-
-    /**
-     * @var bool
-     *
-     * @ORM\Column(name="webhook", type="string", length=500)
-     */
-    private $webhook;
-
-    /**
-     * @var bool
-     *
-     * @ORM\Column(name="webhook_channel", type="string", length=100)
-     */
-    private $webhookChannel;
 
 
     /**
@@ -144,29 +116,6 @@ class Users implements UserInterface
         return $this->password;
     }
 
-    /**
-     * Set email
-     *
-     * @param string $email
-     *
-     * @return Users
-     */
-    public function setEmail($email)
-    {
-        $this->email = $email;
-
-        return $this;
-    }
-
-    /**
-     * Get email
-     *
-     * @return string
-     */
-    public function getEmail()
-    {
-        return $this->email;
-    }
 
     public function getSalt()
     {
@@ -214,30 +163,6 @@ class Users implements UserInterface
     public function getCreatedAt()
     {
         return $this->createdAt;
-    }
-
-    /**
-     * Set updatedAt
-     *
-     * @param string $updatedAt
-     *
-     * @return Domains
-     */
-    public function setUpdatedAt($updatedAt)
-    {
-        $this->updatedAt = $updatedAt;
-
-        return $this;
-    }
-
-    /**
-     * Get updatedAt
-     *
-     * @return string
-     */
-    public function getUpdatedAt()
-    {
-        return $this->updatedAt;
     }
 
     /**
@@ -320,53 +245,5 @@ class Users implements UserInterface
     public function createHashPassword($password)
     {
         return sha1(trim($password));
-    }
-
-    /**
-     * Set webhook
-     *
-     * @param string $webhook
-     *
-     * @return Users
-     */
-    public function setWebhook($webhook)
-    {
-        $this->webhook = $webhook;
-
-        return $this;
-    }
-
-    /**
-     * Get webhook
-     *
-     * @return string
-     */
-    public function getWebhook()
-    {
-        return $this->webhook;
-    }
-
-    /**
-     * Set webhookChannel
-     *
-     * @param string $webhookChannel
-     *
-     * @return Users
-     */
-    public function setWebhookChannel($webhookChannel)
-    {
-        $this->webhookChannel = $webhookChannel;
-
-        return $this;
-    }
-
-    /**
-     * Get webhookChannel
-     *
-     * @return string
-     */
-    public function getWebhookChannel()
-    {
-        return $this->webhookChannel;
     }
 }

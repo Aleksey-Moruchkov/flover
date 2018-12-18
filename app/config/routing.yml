@@ -1,7 +1,6 @@
-flover:
-    resource: "@FloverBundle/Controller/"
-    type:     annotation
-    prefix:   /
+flover_apps:
+    resource: "@FloverAppsBundle/Resources/config/routing.yml"
+    prefix:   /apps
 
 floverart:
     resource: "@FloverartBundle/Resources/config/routing.yml"

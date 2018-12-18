@@ -2,20 +2,16 @@ services:
     floverart_api.serializer:
         class: Symfony\Component\Serializer\Serializer
         arguments: [[
-            '@floverart_api.normalizer.domains',
-            '@floverart_api.normalizer.categories',
             '@floverart_api.normalizer.users',
+            '@floverart_api.normalizer.orders',
             '@floverart_api.constraint.violation',
             ], ['@floverart_api.encoder.json']]
 
-    floverart_api.normalizer.domains:
-        class: FloverartBundle\Serializer\DomainsNormalizer
-
-    floverart_api.normalizer.categories:
-        class: FloverartBundle\Serializer\CategoriesNormalizer
-
     floverart_api.normalizer.users:
         class: FloverartBundle\Serializer\UsersNormalizer
+
+    floverart_api.normalizer.orders:
+        class: FloverartBundle\Serializer\OrdersNormalizer
 
     floverart_api.constraint.violation:
         class: FloverartBundle\Serializer\ConstraintViolationNormalizer

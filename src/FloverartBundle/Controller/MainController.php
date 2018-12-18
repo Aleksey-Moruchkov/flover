@@ -13,7 +13,7 @@ class MainController extends Controller
         $rule = $em->getRepository('FloverartBundle:UserPermissions')
             ->getListPermissions($user->getId());
 
-        $user->setRule($rule);
+//        $user->setRule($rule);
 
         return $user;
     }

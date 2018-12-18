@@ -1,35 +1,3 @@
-floverart_users_list:
-    path:       /users
-    methods:    [GET, OPTIONS]
-    defaults: { _controller: FloverartBundle:Users:list }
-
-floverart_users_create:
-    path:       /users
-    methods:    [POST, OPTIONS]
-    defaults: { _controller: FloverartBundle:Users:create }
-
-floverart_users_show:
-    path:       /users/{id}
-    methods:    [GET, OPTIONS]
-    defaults: { _controller: FloverartBundle:Users:show }
-    requirements:
-        id: '\d+'
-
-floverart_users_update:
-    path:       /users/{id}
-    methods:    [PUT, OPTIONS]
-    defaults: { _controller: FloverartBundle:Users:update }
-    requirements:
-        id: '\d+'
-
-floverart_users_permissions:
-    path:       /users/permissions
-    methods:    [GET, OPTIONS]
-    defaults: { _controller: FloverartBundle:Users:permissions }
-
-floverart_users_delete:
-    path:       /users/{id}
-    methods:    [DELETE, OPTIONS]
-    defaults: { _controller: FloverartBundle:Users:delete }
-    requirements:
-        id: '\d+'
+floverart_users:
+    resource: '@FloverartBundle/Resources/config/route/users.yml'
+    prefix: /users

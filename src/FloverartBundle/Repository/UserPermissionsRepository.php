@@ -10,4 +10,20 @@ namespace FloverartBundle\Repository;
  */
 class UserPermissionsRepository extends \Doctrine\ORM\EntityRepository
 {
+    /**
+     * @param $id
+     * @return array
+     */
+    public function getListPermissions($id)
+    {
+        $res = $this->findBy(['userId' => (int)$id]);
+
+        $result =[];
+        foreach ($res as $item)
+        {
+            $result[] = $item->getField();
+        }
+
+        return $result;
+    }
 }

@@ -1,4 +1,4 @@
 floverart_users_login:
     path:       /login
-    methods:    [POST, OPTIONS]
+    methods:    [GET, POST, OPTIONS]
     defaults: { _controller: FloverartBundle:Security:login }

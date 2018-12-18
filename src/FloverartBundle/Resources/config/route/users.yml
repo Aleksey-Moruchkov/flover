@@ -1,0 +1,35 @@
+floverart_users_list:
+    path:       /
+    methods:    [GET, OPTIONS]
+    defaults: { _controller: FloverartBundle:Users:list }
+
+floverart_users_create:
+    path:       /
+    methods:    [POST, OPTIONS]
+    defaults: { _controller: FloverartBundle:Users:create }
+
+floverart_users_show:
+    path:       /{id}
+    methods:    [GET, OPTIONS]
+    defaults: { _controller: FloverartBundle:Users:show }
+    requirements:
+        id: '\d+'
+
+floverart_users_update:
+    path:       /{id}
+    methods:    [PUT, OPTIONS]
+    defaults: { _controller: FloverartBundle:Users:update }
+    requirements:
+        id: '\d+'
+
+floverart_users_permissions:
+    path:       /permissions
+    methods:    [GET, OPTIONS]
+    defaults: { _controller: FloverartBundle:Users:permissions }
+
+floverart_users_delete:
+    path:       /{id}
+    methods:    [DELETE, OPTIONS]
+    defaults: { _controller: FloverartBundle:Users:delete }
+    requirements:
+        id: '\d+'

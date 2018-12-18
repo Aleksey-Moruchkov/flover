@@ -10,4 +10,15 @@ namespace FloverartBundle\Repository;
  */
 class OrdersRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function getOrdersQuery($filter) {
+        $q = $this->createQueryBuilder("p")
+            ->orderBy('p.id','DESC');
+
+        if (isset($filter['client_id'])) {
+            $q->andWhere('p.clientId = :clientId')
+                ->setParameter('clientId', (int)$filter['client_id']);
+        }
+
+        return $q;
+    }
 }
