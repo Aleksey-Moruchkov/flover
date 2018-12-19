@@ -24,18 +24,8 @@ class ClientsRepository extends \Doctrine\ORM\EntityRepository
         return sha1($rnd . self::SALT . $clientId) == $hash;
     }
 
-    public function generateToken()
+    public function generateToken(Clients $client, $rnd)
     {
-        $em = $this->getEntityManager();
-
-        $client = new Clients();
-        $client->setCreatedAt(date('Y-m-d H:i:s'))
-            ->setIsDeleted(0);
-
-        $em->persist($client);
-        $em->flush();
-
-        $rnd = substr(sha1('z' . random_int(0, PHP_INT_MAX)),5, 20);
         $hash = sha1(  $rnd . self::SALT . $client->getId());
 
         $token = [
@@ -44,11 +34,7 @@ class ClientsRepository extends \Doctrine\ORM\EntityRepository
             $client->getId()
         ];
 
-        $client->setToken(implode('.', $token));
-        $em->flush($client);
-        $em->persist();
-
-        return $client->getToken();
+        return implode('.' , $token);
     }
 
     public function getClientByToken($token) {

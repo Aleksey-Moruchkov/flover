@@ -2,49 +2,28 @@
 
 namespace FloverAppsBundle\Controller;
 
-use Symfony\Component\HttpFoundation\Request;
+use FloverartBundle\Entity\Clients;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class ClientsController extends Controller
 {
-    public function createAction()
+    public function tokenAction()
     {
-        $em = $this->getDoctrine();
-        $orders = $em->getRepository('FloverartBundle:Orders')
-            ->getOrdersQuery();
+        $em = $this->getDoctrine()->getManager();
 
-        return $this->json(['create']);
+        $client = new Clients();
+        $client->setCreatedAt(date('Y-m-d H:i:s'))
+            ->setIsDeleted(0);
+
+        $rnd = substr(sha1('z' . random_int(0, PHP_INT_MAX)),5, 20);
+        $client->setToken($rnd);
+
+        $em->persist($client);
+        $em->flush();
+
+        $em = $this->getDoctrine()->getManager();
+        $clientRepository = $em->getRepository('FloverartBundle:Clients');
+
+        return $this->json($clientRepository->generateToken($client, $rnd));
     }
-
-//    public function listAction(Request $request)
-//    {
-//        $user = $this->getUser();
-//
-//        $filter = $request->query->all();
-//        $filter['client_id'] = $user->getId();
-//
-//        $em = $this->getDoctrine();
-//        $orders = $em->getRepository('FloverartBundle:Orders')
-//            ->getOrdersQuery($filter);
-//
-//        $paginator  = $this->get('knp_paginator');
-//
-//        $pagination = $paginator->paginate(
-//            $orders,
-//            $request->query->get('page', 1),
-//            $request->query->get('count', 25)
-//        );
-//
-//        $items = $pagination->getItems();
-//
-//        $serializer = $this->get('floverart_api.serializer');
-//
-//        return $this->json([
-//            [
-//                'items' => $serializer->normalize($items, null, ['apps' => 1]),
-//                'count' => $pagination->getTotalItemCount()
-//            ]
-//        ]);
-//    }
-
 }

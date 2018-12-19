@@ -2,6 +2,7 @@
 
 namespace FloverAppsBundle\Controller;
 
+use FloverartBundle\Entity\Clients;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -9,6 +10,9 @@ class MainController extends Controller
 {
     private $client;
 
+    /**
+     * @return Clients
+     */
     public function getUser()
     {
         $request = Request::createFromGlobals();
@@ -23,13 +27,17 @@ class MainController extends Controller
         $clientRepository = $em->getRepository('FloverartBundle:Clients');
 
         if (!$clientRepository->validateToken($token)) {
-            die('401');
+            return null;
         }
 
         $client = $clientRepository->getClientByToken($token);
 
         if (!$client) {
-            die('404');
+            return null;
+        }
+
+        if ($client->getIsDeleted()) {
+            return null;
         }
 
         $this->client = $client;
