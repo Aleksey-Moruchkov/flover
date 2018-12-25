@@ -26,9 +26,11 @@ class OrdersNormalizer extends SerializerAwareNormalizer implements NormalizerIn
             'comment'      => $object->getComment(),
             'created_at'   => $object->getCreatedAt(),
             'amount'       => $object->getAmount(),
-//            'product_type' => $object->get(),
-//            'postcard'     => $object->getLogin(),
-//            'shipping_id'  => $object->getLogin(),
+            'amount_from'  => $object->getAmountFrom(),
+            'amount_to'    => $object->getAmountTo(),
+            'postcard'     => $object->getPostcard(),
+            'product_type' => $object->getProductType(),
+            'shipping'     => $this->serializer->normalize($object->getShip(), null, ['apps'=>1]),
         ];
     }
 

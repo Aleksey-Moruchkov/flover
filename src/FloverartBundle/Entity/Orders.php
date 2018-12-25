@@ -101,6 +101,11 @@ class Orders
      */
     private $shippingId;
 
+    /**
+     * @var Ship
+     */
+    private $shipping;
+
 
     /**
      * Get id
@@ -375,6 +380,30 @@ class Orders
     public function getShippingId()
     {
         return $this->shippingId;
+    }
+
+    /**
+     * Set shipping
+     *
+     * @param Ship $ship
+     *
+     * @return Orders
+     */
+    public function setShip(Ship $ship)
+    {
+        $this->shipping = $ship;
+
+        return $this;
+    }
+
+    /**
+     * Get shipping
+     *
+     * @return Ship
+     */
+    public function getShip()
+    {
+        return $this->shipping;
     }
 }
 

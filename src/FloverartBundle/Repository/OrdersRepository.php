@@ -10,6 +10,11 @@ namespace FloverartBundle\Repository;
  */
 class OrdersRepository extends \Doctrine\ORM\EntityRepository
 {
+    /**
+     * @param $filter
+     *
+     * @return \Doctrine\ORM\QueryBuilder
+     */
     public function getOrdersQuery($filter) {
         $q = $this->createQueryBuilder("p")
             ->orderBy('p.id','DESC');
@@ -20,5 +25,25 @@ class OrdersRepository extends \Doctrine\ORM\EntityRepository
         }
 
         return $q;
+    }
+
+    /**
+     * @param $orders
+     * @param $ships
+     *
+     * @return mixed
+     */
+    public function joinShips($orders, $ships) {
+        if (!$orders || !$ships) {
+            return $orders;
+        }
+
+        foreach ($orders as $index => $order) {
+            if (isset($ships[$order->getShippingId()])) {
+                $orders[$index]->setShip($ships[$order->getShippingId()]);
+            }
+        }
+
+        return $orders;
     }
 }

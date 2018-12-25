@@ -4,6 +4,7 @@ services:
         arguments: [[
             '@floverart_api.normalizer.users',
             '@floverart_api.normalizer.orders',
+            '@floverart_api.normalizer.ship',
             '@floverart_api.constraint.violation',
             ], ['@floverart_api.encoder.json']]
 
@@ -12,6 +13,9 @@ services:
 
     floverart_api.normalizer.orders:
         class: FloverartBundle\Serializer\OrdersNormalizer
+
+    floverart_api.normalizer.ship:
+        class: FloverartBundle\Serializer\ShipNormalizer
 
     floverart_api.constraint.violation:
         class: FloverartBundle\Serializer\ConstraintViolationNormalizer
