@@ -35,7 +35,7 @@ class SecurityController extends Controller
             'token' => $user->generateToken(),
             'user'  => [
                 'login'     => $user->getLogin(),
-                'access'    => ['categories', 'domains', 'users']
+                'access'    => ['categories', 'orders', 'users']
             ]
         ]);
     }

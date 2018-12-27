@@ -17,6 +17,7 @@ class OrdersRepository extends \Doctrine\ORM\EntityRepository
      */
     public function getOrdersQuery($filter) {
         $q = $this->createQueryBuilder("p")
+            ->andWhere('p.isDeleted = 0')
             ->orderBy('p.id','DESC');
 
         if (isset($filter['client_id'])) {

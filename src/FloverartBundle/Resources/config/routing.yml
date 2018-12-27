@@ -1,3 +1,7 @@
 floverart_users:
     resource: '@FloverartBundle/Resources/config/route/users.yml'
     prefix: /users
+
+floverart_orders:
+    resource: '@FloverartBundle/Resources/config/route/orders.yml'
+    prefix: /orders

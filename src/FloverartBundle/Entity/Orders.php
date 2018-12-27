@@ -102,6 +102,20 @@ class Orders
     private $shippingId;
 
     /**
+     * @var int
+     *
+     * @ORM\Column(name="is_deleted", type="integer")
+     */
+    private $isDeleted;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="deleted_at", type="string", length=255)
+     */
+    private $deletedAt;
+
+    /**
      * @var Ship
      */
     private $shipping;
@@ -404,6 +418,54 @@ class Orders
     public function getShip()
     {
         return $this->shipping;
+    }
+
+    /**
+     * Set isDeleted
+     *
+     * @param int $isDeleted
+     *
+     * @return Orders
+     */
+    public function setIsDeleted($isDeleted)
+    {
+        $this->isDeleted = $isDeleted;
+
+        return $this;
+    }
+
+    /**
+     * Get isDeleted
+     *
+     * @return int
+     */
+    public function getIsDeleted()
+    {
+        return $this->isDeleted;
+    }
+
+    /**
+     * Set deletedAt
+     *
+     * @param string $deletedAt
+     *
+     * @return Orders
+     */
+    public function setDeletedAt($deletedAt)
+    {
+        $this->deletedAt = $deletedAt;
+
+        return $this;
+    }
+
+    /**
+     * Get deletedAt
+     *
+     * @return string
+     */
+    public function getDeletedAt()
+    {
+        return $this->deletedAt;
     }
 }
 

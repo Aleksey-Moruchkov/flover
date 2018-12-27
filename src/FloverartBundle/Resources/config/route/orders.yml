@@ -1,0 +1,30 @@
+floverart_orders_list:
+    path:       /
+    methods:    [GET, OPTIONS]
+    defaults: { _controller: FloverartBundle:Orders:list }
+
+floverart_orders_create:
+    path:       /
+    methods:    [POST, OPTIONS]
+    defaults: { _controller: FloverartBundle:Orders:create }
+
+floverart_orders_show:
+    path:       /{id}
+    methods:    [GET, OPTIONS]
+    defaults: { _controller: FloverartBundle:Orders:show }
+    requirements:
+        id: '\d+'
+
+floverart_orders_update:
+    path:       /{id}
+    methods:    [PUT, OPTIONS]
+    defaults: { _controller: FloverartBundle:Orders:update }
+    requirements:
+        id: '\d+'
+
+floverart_orders_delete:
+    path:       /{id}
+    methods:    [DELETE, OPTIONS]
+    defaults: { _controller: FloverartBundle:Orders:delete }
+    requirements:
+        id: '\d+'

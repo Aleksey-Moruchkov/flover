@@ -57,6 +57,11 @@ class Users implements UserInterface
      */
     private $isDeleted = 0;
 
+    /**
+     * @var array
+     */
+    private static $permissionsList = ['orders', 'users', 'categories'];
+
 
     /**
      * Get id
@@ -66,6 +71,14 @@ class Users implements UserInterface
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * @return array
+     */
+    public static function getListPermissions()
+    {
+        return self::$permissionsList;
     }
 
     /**

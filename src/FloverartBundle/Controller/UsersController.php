@@ -212,6 +212,6 @@ class UsersController extends MainController
             return $this->json('403 Access denied', 403);
         }
 
-        return $this->json(['users', 'categories']);
+        return $this->json(Users::getListPermissions());
     }
 }

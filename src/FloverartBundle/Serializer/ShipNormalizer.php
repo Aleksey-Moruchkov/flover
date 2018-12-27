@@ -30,6 +30,13 @@ class ShipNormalizer extends SerializerAwareNormalizer implements NormalizerInte
             ];
         }
 
+        if (isset($context['full'])) {
+            return [
+                'id'      => $object->getId(),
+                'address' => $object->getAddress(),
+            ];
+        }
+
         return [
             'id' => $object->getId(),
         ];
