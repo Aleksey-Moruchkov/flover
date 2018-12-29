@@ -38,6 +38,13 @@ class Clients
     /**
      * @var string
      *
+     * @ORM\Column(name="uniq_id", type="string", length=64)
+     */
+    private $uniqId;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="created_at", type="string", length=255)
      */
     private $createdAt;
@@ -185,6 +192,30 @@ class Clients
     public function getDeletedAt()
     {
         return $this->deletedAt;
+    }
+
+    /**
+     * Set uniqId
+     *
+     * @param string $uniqId
+     *
+     * @return Clients
+     */
+    public function setUniqId($uniqId)
+    {
+        $this->uniqId = $uniqId;
+
+        return $this;
+    }
+
+    /**
+     * Get uniqId
+     *
+     * @return string
+     */
+    public function getUniqId()
+    {
+        return $this->uniqId;
     }
 }
 
