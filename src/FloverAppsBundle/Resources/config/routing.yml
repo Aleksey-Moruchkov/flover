@@ -1,0 +1,28 @@
+flover_apps_client_token:
+    path:       /auth/
+    methods:    [GET, OPTIONS]
+    defaults: { _controller: FloverAppsBundle:Clients:token }
+
+flover_apps_orders_list:
+    path:       /orders/
+    methods:    [GET, OPTIONS]
+    defaults: { _controller: FloverAppsBundle:Orders:list }
+
+flover_apps_orders_show:
+    path:       /orders/{id}/
+    methods:    [GET, OPTIONS]
+    defaults: { _controller: FloverAppsBundle:Orders:show }
+    requirements:
+        id: '\d+'
+
+flover_apps_orders_update:
+    path:       /orders/{id}/
+    methods:    [PUT, OPTIONS]
+    defaults: { _controller: FloverAppsBundle:Orders:update }
+    requirements:
+        id: '\d+'
+
+flover_apps_orders_create:
+    path:       /orders/
+    methods:    [POST, OPTIONS]
+    defaults: { _controller: FloverAppsBundle:Orders:create }

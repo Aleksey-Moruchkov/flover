@@ -1,0 +1,6 @@
+#services:
+#    flover_apps.main:
+#        class: FloverAppsBundle\Controller\MainController
+#        calls:
+#            - [initClient, [] ]
+#        arguments: ["@service_container"]
