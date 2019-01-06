@@ -12,7 +12,7 @@ use FloverartBundle\Entity\Clients;
  */
 class ClientsRepository extends \Doctrine\ORM\EntityRepository
 {
-    private const SALT = '?~*W3P~4z8Ef57#c}eV50~qb8av#qqK|9giJtgdB';
+    const SALT = '?~*W3P~4z8Ef57#c}eV50~qb8av#qqK|9giJtgdB';
 
     public function validateToken($token) {
         list($rnd, $hash, $clientId) = explode('.', $token);

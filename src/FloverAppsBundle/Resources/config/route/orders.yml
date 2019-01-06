@@ -1,0 +1,23 @@
+flover_apps_orders_list:
+    path:       /
+    methods:    [GET, OPTIONS]
+    defaults: { _controller: FloverAppsBundle:Orders:list }
+
+flover_apps_orders_show:
+    path:       /{id}/
+    methods:    [GET, OPTIONS]
+    defaults: { _controller: FloverAppsBundle:Orders:show }
+    requirements:
+        id: '\d+'
+
+flover_apps_orders_update:
+    path:       /{id}/
+    methods:    [PUT, OPTIONS]
+    defaults: { _controller: FloverAppsBundle:Orders:update }
+    requirements:
+        id: '\d+'
+
+flover_apps_orders_create:
+    path:       /
+    methods:    [POST, OPTIONS]
+    defaults: { _controller: FloverAppsBundle:Orders:create }

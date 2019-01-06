@@ -1,0 +1,4 @@
+floverart_ship_list:
+    path:       /
+    methods:    [GET, OPTIONS]
+    defaults: { _controller: FloverartBundle:Ship:list }
