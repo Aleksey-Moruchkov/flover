@@ -1,4 +1,9 @@
 floverart_apps_auth:
     path:       /
     methods:    [GET, OPTIONS]
-    defaults: { _controller: FloverAppsBundle:Clients:token }
+    defaults: { _controller: FloverAppsBundle:Auth:token }
+
+floverart_apps_auth:
+    path:       /
+    methods:    [POST, OPTIONS]
+    defaults: { _controller: FloverAppsBundle:Clients:update }

@@ -196,26 +196,26 @@ class OrdersController extends MainController
 
         $em = $this->getDoctrine()->getManager();
 
-//        if (!empty($context['shipping']) ) {
-//            $ship = new Ship();
-//            $ship
-//                ->setClientId($user->getId())
-//                ->setAddress($context['shipping'])
-//                ->setCreatedAt(date('Y-m-d H:i:s'));
-//
-//            $em->persist($ship);
-//            $em->flush();
-//
-//            $order->setShippingId($ship->getId());
-//            $order->setShip($ship);
-//        } else {
-//            $ship = $em->getRepository('FloverartBundle:Ship')
-//                ->getShipById($order->getShippingId(), $user);
-//
-//            if ($ship) {
-//                $order->setShip($ship);
-//            }
-//        }
+        if (!empty($context['shipping']) ) {
+            $ship = new Ship();
+            $ship
+                ->setClientId($user->getId())
+                ->setAddress($context['shipping'])
+                ->setCreatedAt(date('Y-m-d H:i:s'));
+
+            $em->persist($ship);
+            $em->flush();
+
+            $order->setShippingId($ship->getId());
+            $order->setShip($ship);
+        } else {
+            $ship = $em->getRepository('FloverartBundle:Ship')
+                ->getShipById($order->getShippingId(), $user);
+
+            if ($ship) {
+                $order->setShip($ship);
+            }
+        }
 
         $em->persist($order);
         $em->flush();

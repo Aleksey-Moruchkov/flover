@@ -21,7 +21,13 @@ class MainController extends Controller
             return $this->client;
         }
 
-        $token = $request->get('token', '');
+        $token = $request->headers->get('Authorization');
+
+        if (empty($token)) {
+            $token = $request->get('token', '');
+        }
+
+        $token = str_replace('Bearer ', '', $token);
 
         $em = $this->getDoctrine()->getManager();
         $clientRepository = $em->getRepository('FloverartBundle:Clients');
@@ -41,6 +47,7 @@ class MainController extends Controller
         }
 
         $this->client = $client;
+
         return $this->client;
     }
 }
